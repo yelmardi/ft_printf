@@ -48,11 +48,11 @@ int	print_ptr(unsigned long ptr)
 	int	ptr_len;
 
 	ptr_len = 0;
-	ptr_len += write(1, "0x", 2);
-	if (!ptr)
-		ptr_len += write(1, "0", 1);
+	if (ptr == 0)
+		ptr_len += write(1, "(nil)", 5);
 	else
 	{
+		ptr_len += write(1, "0x", 2);
 		get_ptr(ptr);
 		ptr_len += ft_ptr_len(ptr);
 	}
